@@ -83,7 +83,7 @@ app.post("/extract-json-by-naimur", async (req, res) => {
 });
 
 // start server
-// const PORT =  5000;
-// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+const PORT =  5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 
