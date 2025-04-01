@@ -1,12 +1,12 @@
 const express = require("express");
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const Tesseract = require("tesseract.js");
-const cors = require("cors");
 
 const app = express();
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(cors({
-    origin:  "*",  // Allow  origins (for testing) 
+    origin:  "https://json-extraction-challenge.intellixio.com/",  // Allow  origins (for testing) 
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"]
   }));
