@@ -6,7 +6,7 @@ const cors = require("cors");
 const app = express();
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(cors({
-    origin:  "https://json-extraction-challenge.intellixio.com",  // Allow  origins (for testing) 
+    origin:  "*",  // Allow  origins (for testing) 
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"]
   }));
