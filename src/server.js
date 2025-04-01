@@ -5,7 +5,11 @@ const cors = require("cors");
 
 const app = express();
 app.use(bodyParser.json({ limit: "50mb" }));
-app.use(cors());
+app.use(cors({
+    origin: "*",  // Allow all origins (for testing) 
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type"]
+  }));
 
 
 
