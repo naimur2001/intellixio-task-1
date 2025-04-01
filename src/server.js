@@ -6,7 +6,7 @@ const cors = require("cors");
 const app = express();
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(cors({
-    origin: "*",  // Allow all origins (for testing) 
+    origin:  "https://json-extraction-challenge.intellixio.com",  // Allow  origins (for testing) 
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"]
   }));
@@ -83,7 +83,7 @@ app.post("/extract-json-by-naimur", async (req, res) => {
 });
 
 // start server
-const PORT =  5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// const PORT =  5000;
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 
