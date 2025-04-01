@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const Tesseract = require("tesseract.js");
 const app = express();
 app.use(cors({
-    origin: "https://json-extraction-challenge.intellixio.com",  // No trailing slash
+    origin: ["https://json-extraction-challenge.intellixio.com","https://intellixio-task-1.vercel.app/extract-json-by-naimur"],  // No trailing slash
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"]
 }));
