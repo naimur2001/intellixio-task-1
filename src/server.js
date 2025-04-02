@@ -9,13 +9,7 @@ app.use(cors({
     methods: ["GET", "POST", "PUT","DELETE","OPTION"],
     allowedHeaders: ["Content-Type"]
 }));
-// app.use(cors({
-//     origin: "*",
-//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-//     allowedHeaders: ["Content-Type"]
-// }));
-// app.use(cors())
-app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.json({ limit: "10mb" }));
 
 
 
