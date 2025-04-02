@@ -4,11 +4,17 @@ const bodyParser = require("body-parser");
 const Tesseract = require("tesseract.js");
 const app = express();
 app.use(cors({
-    // origin: ["https://json-extraction-challenge.intellixio.com","https://intellixio-task-1.vercel.app/extract-json-by-naimur"],  // No trailing slash
-    origin:"*",
-    methods: ["GET", "POST"],
+    origin: ["https://json-extraction-challenge.intellixio.com"],  // No trailing slash
+
+    methods: ["GET", "POST", "PUT","DELETE","OPTION"],
     allowedHeaders: ["Content-Type"]
 }));
+// app.use(cors({
+//     origin: "*",
+//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//     allowedHeaders: ["Content-Type"]
+// }));
+// app.use(cors())
 app.use(bodyParser.json({ limit: "50mb" }));
 
 
@@ -23,11 +29,14 @@ const cleanExtractedText = (text) => {
         .replace(/\s*,\s*/g, ', ') // Normalize spacing around commas
         .replace(/(\w)\n(\w)/g, '$1 $2') // Replace newlines inside words
         .replace(/lq/g, '')  // Remove unnecessary "lq"
-        .replace(/(\w+):\s*\((\d{3})\)\s*(\d{3}-\d{4}.*)/g, '$1: "$2-$3"') // **Fix mobile numbers**
+        // Fix phone numbers, ensuring they are always inside quotes
+        .replace(/(\w+):\s*\(?(\d{3})\)?[\s-]?(\d{3})[\s-]?(\d{4}(?:\s*x\d+)?)/g, '$1: "$2-$3-$4"')
         .trim();
 
     return `{${cleaned}}`; // JSON format
 };
+
+
 
 // testing route
 app.get("/", (req, res) => {
@@ -85,6 +94,7 @@ app.post("/extract-json-by-naimur", async (req, res) => {
 
 // start server
 const PORT =  5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT} --> `, 
+    "http://localhost:5000/extract-json-by-naimur"));
 
 
